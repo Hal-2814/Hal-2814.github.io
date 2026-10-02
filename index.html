@@ -1,48 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Definitely Not Sketchy</title>
 
-    <style>
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            overflow: hidden;
-        }
+<style>
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: black;
+}
 
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+#overlay {
+    position: fixed;
+    inset: 0;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-size: 2rem;
+    z-index: 9999;
+    cursor: pointer;
+}
 
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    </style>
+video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    display: none;
+}
+</style>
+
 </head>
-
 <body>
 
-    <video
-        id="video"
-        autoplay
-        muted
-        loop
-        playsinline
-        controls
-        preload="auto"
-    >
-        <source src="./Iv_0_20261002235420.mp4" type="video/mp4">
-        Your browser cannot play this video.
-    </video>
+<div id="overlay">📄 Tap anywhere to continue</div>
+
+<video id="video" loop playsinline>
+    <source src="Iv_0_20261002235420.mp4" type="video/mp4">
+</video>
+
+<script>
+const overlay = document.getElementById("overlay");
+const video = document.getElementById("video");
+
+overlay.addEventListener("click", async () => {
+    overlay.style.display = "none";
+    video.style.display = "block";
+
+    try {
+        await video.play();
+    } catch (err) {
+        console.error(err);
+    }
+});
+</script>
 
 </body>
 </html>
