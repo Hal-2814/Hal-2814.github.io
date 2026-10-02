@@ -1,28 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video</title>
+
     <style>
-        body {
+        html, body {
             margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
             background: black;
+            overflow: hidden;
+        }
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
         }
 
         video {
-            max-width: 100vw;
-            max-height: 100vh;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
         }
     </style>
 </head>
 
 <body>
-    <video autoplay loop playsinline controls>
-        <source src="Iv_0_20261002235420.mp4" type="video/mp4">
+
+    <video
+        id="video"
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+        preload="auto"
+    >
+        <source src="./Iv_0_20261002235420.mp4" type="video/mp4">
+        Your browser cannot play this video.
     </video>
+
 </body>
 </html>
